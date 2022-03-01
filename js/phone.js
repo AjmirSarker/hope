@@ -1,31 +1,51 @@
 //Show All Search Phone
 const searchPhone =()=>{
+  Loading('block')
     let Searchfield = document.getElementById('input');
   let Searchvalue = Searchfield.value;
   const calculateLength = Searchvalue.toString();
 if(calculateLength.length == 0){
-
+Loading('none')
+ErrorHandle('block')
+const mainDiv = document.getElementById('searchResult')
+    mainDiv.innerHTML=''
 }
 else{
     const url = `https://openapi.programming-hero.com/api/phones?search=${Searchvalue}`
     fetch(url)
     .then((res)=> res.json())
-    .then((datas)=>DisplayResult(datas.data))
-    Searchfield.innerHTML=''
+    .then((datas)=>DisplayResult(datas.data.slice(0,20)))
+    Searchfield.value=''
 
 } 
 }
+//error & spinner
+const Loading = (value) => {
+    document.getElementById('spinner').style.display = value;
+  };
+  const ErrorHandle = (show) => {
+    document.getElementById('ErrorName').style.display = show;
+  };
 //display All
 const DisplayResult=(phones)=>{
-    const mainDiv = document.getElementById('searchResult')
+  const mainDiv = document.getElementById('searchResult')
     mainDiv.innerHTML=''
+
+    if(phones.length==0){
+ErrorHandle('block')
+const mainDiv = document.getElementById('searchResult')
+    mainDiv.innerHTML=''
+
+    }else{
+      ErrorHandle('none')
+      Loading('none')
     phones.forEach(phone => {
     const div = document.createElement('div')
     div.classList.add('col', 'rounded','text-center');
   
       div.innerHTML = `
           <div   class="shadow w-100 g-4  mb-5 h-100">
-    <img src="${phone.image}" class="card-img-top mt-2 w-75 text-center" alt="...">
+    <img src="${phone.image}" class="card-img-top mt-2 w-50 mx-auto text-center" alt="...">
     <div class="card-body">
       <h5 class="card-title">${phone.phone_name}</h5>
       <p class="card-text">${phone.brand}</p>
@@ -37,6 +57,8 @@ const DisplayResult=(phones)=>{
           mainDiv.appendChild(div);
         
     });
+
+    }
 }
 const loadPhoneDetails =(phoneId)=>{
     const url = `https://openapi.programming-hero.com/api/phone/${phoneId}`;

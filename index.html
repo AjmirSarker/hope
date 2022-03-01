@@ -11,7 +11,7 @@
 <body>
     <header>
         <h1 class="text-center text-info mt-3 fw-bolder">Search Your Phone</h1>
-        <!-- Meal Search -->
+        <!-- Phone Search -->
         <div class="input-group mb-3 w-50  mx-auto mt-5  rounded">
           <input
             type="text"
@@ -20,12 +20,15 @@
             placeholder="Type your food name"
             aria-label="Recipient's username"
             aria-describedby="button-addon2"
+            
           />
+        
           <button
             onclick="searchPhone()"
             class="btn btn-warning"
             type="button"
             id="button-addon2"
+            href="#searchResult"
           >
             Search
           </button>
@@ -42,7 +45,7 @@
         </div>
         <!-- Error Name -->
         <div id="ErrorName">
-          <h1 class="fw-bolder text-warning text-center ">Enter Valid phonename</h1>
+          <h1 class="fw-bolder text-warning text-center ">Enter Valid phone name</h1>
         </div>
 
     </header>
@@ -51,7 +54,7 @@
     <div id="singleDetails" class="d-flex justify-content-center mb-5"></div>
     <div id="moreDetails" class="d-flex justify-content-center mb-5"></div>
    
-    <!-- Meal Search result -->
+    <!-- Phone Search result -->
     <div class="container">
 
    
