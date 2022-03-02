@@ -127,22 +127,19 @@ const Displaymoredetails = (phone) => {
     'mt-4'
   );
 
-  try {
+  
     div.innerHTML = `
     <p> Sensors : </p>
               <p class="card-text">  ${phone.mainFeatures.sensors}</p>   
               <p> Others : </p>
-             <p class="card-text">Bluetooth: ${phone.others.Bluetooth}</p>
-              <p class="card-text">GPS: ${phone.others.GPS}</p>
-              <p class="card-text">NFC: ${phone.others.NFC}</p>
-              <p class="card-text">Radio: ${phone.others.Radio}</p>
-              <p class="card-text">USB: ${phone.others.USB}</p>
-              <p class="card-text">WLAN: ${phone.others.WLAN}</p>`;
-  } catch {
-    div.innerHTML = ` 
-    <p> Sensors : </p>
-     <p class="card-text"> ${phone.mainFeatures.sensors}</p>   
-              <p class="card-text"> Others : No proper others value.</p>`;
-  }
+             <p class="card-text">Bluetooth:  ${(typeof (phone.others) )==='undefined'?"no value found":phone.others.Bluetooth}</p>
+              <p class="card-text">GPS:  ${(typeof (phone.others) )==='undefined'?"no value found":phone.others.GPS}</p>
+              <p class="card-text">NFC:  ${(typeof (phone.others) )==='undefined'?"no value found":phone.others.NFC}</p>
+              <p class="card-text">Radio: ${(typeof (phone.others) )==='undefined'?"no value found":phone.others.Radio}</p>
+              <p class="card-text">USB:  ${(typeof (phone.others) )==='undefined'?"no value found":phone.others.USB}</p>
+              <p class="card-text">WLAN:  ${(typeof (phone.others) )==='undefined'?"no value found":phone.others.WLAN}</p>`;
+ 
+ 
+    
   phonedit.appendChild(div);
 };
